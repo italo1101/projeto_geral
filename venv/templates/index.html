@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css"> 
+    <link rel="icon" href="../static/img/car-collision.png" type="image/png">
+    <title>Data Crash</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1 id="logo-name">Data Crash</h1>
+            <img id="logo-img" src="../static/img/car-collision.png" alt="logo">
+        </div>
+        <nav class="nav">
+            <a href="#">Home</a>
+            <a href="#sobre">Sobre</a> <!-- Link para a seção "Sobre" -->
+            <a href="#">Gráficos do trânsito</a>
+            <a href="#">Dicas de Segurança</a>
+            <a href="#">Teste de Fatalidade</a>
+        </nav>
+    </header>
+  
+    <section class="hero">
+        <h1>Explore os dados de acidentes de trânsito de forma inovadora</h1>
+        <p>Descubra insights valiosos e promova a segurança nas estradas.</p>
+        <button class="cta-button">Comece Agora</button>
+    </section>
+
+    <section class="cards">
+        <div class="card">
+            <h3>Acidentes por Localização</h3>
+            <p>Dados sobre onde os acidentes ocorrem com mais frequência.</p>
+            <a href="#localizacao" class="card-button">Ver Mais</a>
+        </div>
+        <div class="card">
+            <h3>Fatores de Risco</h3>
+            <p>Identificação dos principais fatores que contribuem para acidentes.</p>
+            <a href="#fatores" class="card-button">Ver Mais</a>
+        </div>
+        <div class="card">
+            <h3>Estatísticas Mensais</h3>
+            <p>Análise de tendências mensais de acidentes de trânsito.</p>
+            <a href="#estatisticas" class="card-button">Ver Mais</a>
+        </div>
+        <div class="card">
+            <h3>Medidas de Segurança</h3>
+            <p>Recomendações para melhorar a segurança nas estradas.</p>
+            <a href="#seguranca" class="card-button">Ver Mais</a>
+        </div>
+    </section>
+
+    <!-- Seção "Sobre" -->
+    <section id="sobre" class="sobre">
+        <h2>Sobre o Projeto</h2>
+        <p>O DataCrash é uma plataforma inovadora e poderosa, originada na Universidade Tiradentes, onde, com o apoio e a mentoria de professores especializados, o projeto foi desenvolvido e aprimorado. O sistema foi projetado para coletar, analisar e interpretar dados detalhados sobre acidentes de trânsito, e, para oferecer ainda mais precisão, foi treinada uma inteligência artificial (IA) para realizar uma análise exploratória avançada dos dados. A IA permite identificar padrões ocultos, detectar tendências e fatores de risco em tempo real, oferecendo insights valiosos que contribuem diretamente para a melhoria da segurança nas estradas. Com nosso sistema, é possível monitorar a frequência e a gravidade dos acidentes em diferentes localidades, gerar relatórios detalhados e tomar decisões informadas para a implementação de medidas preventivas. Baseado em dados reais, o DataCrash capacita organizações, autoridades e profissionais de segurança viária a otimizar o planejamento de intervenções e criar políticas públicas que visam a redução de acidentes e a proteção de vidas.</p>
+    </section>
+
+    <section id="eda-graficos">
+        <h2>Gráficos da Análise Exploratória de Dados (EDA)</h2>
+        <div class="eda-grafico" data-graph="heatmap">
+            <img src="../static/img/heatmap-img.png" alt="heatmap" class="grafico-img">
+        </div>
+        <div class="eda-grafico" data-graph="linechart">
+            <img src="../static/img/linechart-img.png" alt="linechart" class="grafico-img">
+        </div>
+        <div class="eda-grafico" data-graph="barchart01">
+            <img src="../static/img/barchar01-img.png" alt="barchart01" class="grafico-img">
+        </div>
+        <div class="eda-grafico" data-graph="barchart02">
+            <img src="../static/img/barchar02-img.png" alt="barchart02" class="grafico-img">
+        </div>
+        <div class="eda-grafico" data-graph="barchart03">
+            <img src="../static/img/barchar03-img.png" alt="barchart03" class="grafico-img">
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-image">
+                <img id="modal-img" src="" alt="Gráfico">
+            </div>
+            <div class="modal-description">
+                <p id="modal-text">Descrição do gráfico</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- dicas -->
+
+    <section id="dicas-seguranca" class="dicas-seguranca">
+        <h2>Dicas de Segurança no Trânsito</h2>
+        <div class="dica-categoria">
+            <h3>Pedestres</h3>
+            <ul>
+                <li>Use sempre a faixa de pedestre ao atravessar a rua.</li>
+                <li>Evite distrações, como o uso de celular, enquanto atravessa a rua.</li>
+                <li>Olhe para os dois lados antes de atravessar, mesmo que o semáforo esteja verde.</li>
+                <li>Se possível, atravesse em locais bem iluminados, principalmente à noite.</li>
+            </ul>
+        </div>
+        
+        <div class="dica-categoria">
+            <h3>Ciclistas</h3>
+            <ul>
+                <li>Use sempre o capacete e equipamentos de segurança apropriados.</li>
+                <li>Siga as regras de trânsito, como sinalizar manobras com os braços.</li>
+                <li>Esteja atento aos motoristas e pedestres ao pedalar em áreas urbanas.</li>
+                <li>Evite andar por vias movimentadas quando possível e procure ciclovias ou ciclofaixas.</li>
+            </ul>
+        </div>
+        
+        <div class="dica-categoria">
+            <h3>Motoristas</h3>
+            <ul>
+                <li>Use o cinto de segurança sempre, tanto para você quanto para os passageiros.</li>
+                <li>Mantenha uma distância segura dos outros veículos e evite ultrapassagens perigosas.</li>
+                <li>Respeite os limites de velocidade e sinais de trânsito.</li>
+                <li>Evite dirigir sob o efeito de álcool ou outras substâncias.</li>
+            </ul>
+        </div>
+        
+        <div class="dica-categoria">
+            <h3>Passageiros</h3>
+            <ul>
+                <li>Use sempre o cinto de segurança, mesmo no banco de trás.</li>
+                <li>Evite distrair o motorista durante a condução.</li>
+                <li>Não abra portas ou janelas enquanto o veículo está em movimento.</li>
+                <li>Em caso de emergência, siga as instruções do motorista com calma e rapidez.</li>
+            </ul>
+        </div>
+        
+        <div class="dica-categoria">
+            <h3>Veículos</h3>
+            <ul>
+                <li>Mantenha a manutenção regular do veículo, como freios e pneus.</li>
+                <li>Verifique os níveis de óleo, água e outros fluidos antes de viagens longas.</li>
+                <li>Garanta que todas as luzes do veículo estão funcionando corretamente, incluindo faróis e piscas.</li>
+                <li>Não deixe objetos soltos dentro do carro que possam se tornar perigosos em uma freada brusca.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="fatalidade-acidente" class="fatalidade-section">
+        <h2>Calcular Taxa de Fatalidade</h2>
+        <p>Insira as informações do acidente para estimar a taxa de fatalidade:</p>
+        <form id="fatalidade-form">
+            <label for="num_envolvidos">Número de Envolvidos:</label>
+            <input type="number" id="num_envolvidos" name="num_envolvidos" required>
+    
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" required>
+    
+            <label for="categoria_habilitacao">Categoria da Habilitação:</label>
+            <select id="categoria_habilitacao" name="categoria_habilitacao" required>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+            </select>
+    
+            <label for="dia_semana">Dia da Semana:</label>
+            <select id="dia_semana" name="dia_semana" required>
+                <option value="1">Segunda-feira</option>
+                <option value="2">Terça-feira</option>
+                <option value="3">Quarta-feira</option>
+                <option value="4">Quinta-feira</option>
+                <option value="5">Sexta-feira</option>
+                <option value="6">Sábado</option>
+                <option value="7">Domingo</option>
+            </select>
+    
+            <label for="hora">Hora:</label>
+            <input type="time" id="hora" name="hora" required>
+    
+            <label for="faixa_etaria">Faixa Etária:</label>
+            <input type="text" id="faixa_etaria" name="faixa_etaria" placeholder="Exemplo: 18-25" required>
+    
+            <label for="mes">Mês:</label>
+            <select id="mes" name="mes" required>
+                <option value="1">Janeiro</option>
+                <option value="2">Fevereiro</option>
+                <option value="3">Março</option>
+                <option value="4">Abril</option>
+                <option value="5">Maio</option>
+                <option value="6">Junho</option>
+                <option value="7">Julho</option>
+                <option value="8">Agosto</option>
+                <option value="9">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+            </select>
+    
+            <label for="dia">Dia:</label>
+            <input type="number" id="dia" name="dia" required>
+    
+            <button type="button" id="calcular-fatalidade">Calcular Taxa de Fatalidade</button>
+        </form>
+        <div id="resultado-fatalidade" class="resultado"></div>
+    </section>
+
+    <!-- footer -->
+
+    <footer>
+        <div class="footer-container">
+            <!-- Sobre Nós -->
+            <div class="footer-section">
+                <h5>Sobre Nós</h5>
+                <p>
+                    Nossa missão é tornar o trânsito mais seguro para todos. Agradecemos por fazer parte dessa iniciativa.
+                </p>
+            </div>
+    
+            <!-- Links Úteis -->
+            <div class="footer-section">
+                <h5>Links Úteis</h5>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/dicas">Dicas de Segurança</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                </ul>
+            </div>
+    
+            <!-- Contato -->
+            <div class="footer-section">
+                <h5>Contato</h5>
+                <ul>
+                    <li>Email: <a href="mailto:contato@transitoseguro.com">contato@transitoseguro.com</a></li>
+                    <li>Telefone: +55 11 1234-5678</li>
+                    <li>Endereço: Rua Exemplo, 123 - São Paulo, SP</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; 2024 Data Crash. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    
+    
+
+    <!-- GTranslate Widget -->
+    <div class="gtranslate_wrapper"></div>
+    <script>
+        window.gtranslateSettings = {
+            "default_language": "pt",
+            "languages": ["pt", "en"],
+            "globe_color": "#ffd700",
+            "wrapper_selector": ".gtranslate_wrapper",
+            "horizontal_position": "left",
+            "vertical_position": "bottom",
+            "alt_flags": {
+                "en": "usa",
+                "pt": "brazil"
+            }
+        }
+    </script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/globe.js" defer></script>
+    <script src="script.js"></script>
+</body>
+</html>
