@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static\css\style.css"> 
+    <link rel="icon" href="../static/img/car-collision.png" type="image/png">
+    <title>Data Crash</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1 id="logo-name">Data Crash</h1>
+            <img id="logo-img" src="../static/img/car-collision.png" alt="logo">
+        </div>
+        <nav class="nav">
+            <a href="#home">Home</a>
+            <a href="#sobre">Sobre</a> <!-- Link para a seção "Sobre" -->
+            <a href="#graficos">Gráficos do trânsito</a> <!-- Link para a seção "Gráficos" -->
+            <a href="#dicas-seguranca">Dicas de Segurança</a> <!-- Link para a seção "Dicas de Segurança" -->
+            <a href="#fatalidade-acidente">Teste de Fatalidade</a> <!-- Link para a seção "Teste de Fatalidade" -->
+        </nav>
+    </header>
+  
+    <section id="home" class="hero">
+        <h1>Explore os dados de acidentes de trânsito de forma inovadora</h1>
+        <p>Descubra insights valiosos e promova a segurança nas estradas.</p>
+        <a href="#fatalidade-acidente"><button class="cta-button">Comece Agora</button></a>
+    </section>
+
+    <section class="cards">
+        <div class="card">
+            <h3>Acidentes por Localização</h3>
+            <p>Dados sobre onde os acidentes ocorrem com mais frequência.</p>
+            <a href="#localizacao" class="card-button">Ver Mais</a>
+        </div>
+        <div class="card">
+            <h3>Fatores de Risco</h3>
+            <p>Identificação dos principais fatores que contribuem para acidentes.</p>
+            <a href="#fatores" class="card-button">Ver Mais</a>
+        </div>
+        <div class="card">
+            <h3>Estatísticas Mensais</h3>
+            <p>Análise de tendências mensais de acidentes de trânsito.</p>
+            <a href="#estatisticas" class="card-button">Ver Mais</a>
+        </div>
+        <div class="card">
+            <h3>Medidas de Segurança</h3>
+            <p>Recomendações para melhorar a segurança nas estradas.</p>
+            <a href="#seguranca" class="card-button">Ver Mais</a>
+        </div>
+    </section>
+
+    <!-- Seção "Sobre" -->
+    <section id="sobre" class="sobre">
+        <h2>Sobre o Projeto</h2>
+        <p>O DataCrash é uma plataforma inovadora e poderosa, originada na Universidade Tiradentes, onde, com o apoio e a mentoria de professores especializados, o projeto foi desenvolvido e aprimorado. O sistema foi projetado para coletar, analisar e interpretar dados detalhados sobre acidentes de trânsito, e, para oferecer ainda mais precisão, foi treinada uma inteligência artificial (IA) para realizar uma análise exploratória avançada dos dados. A IA permite identificar padrões ocultos, detectar tendências e fatores de risco em tempo real, oferecendo insights valiosos que contribuem diretamente para a melhoria da segurança nas estradas. Com nosso sistema, é possível monitorar a frequência e a gravidade dos acidentes em diferentes localidades, gerar relatórios detalhados e tomar decisões informadas para a implementação de medidas preventivas. Baseado em dados reais, o DataCrash capacita organizações, autoridades e profissionais de segurança viária a otimizar o planejamento de intervenções e criar políticas públicas que visam a redução de acidentes e a proteção de vidas.</p>
+    </section>
+
+    <section id="graficos">
+        <h2>Gráficos da Análise Exploratória de Dados (EDA)</h2>
+        <div class="eda-grafico" data-graph="heatmap">
+            <img src="../static/img/heatmap-img.png" alt="heatmap" class="grafico-img">
+        </div>
+        <div class="eda-grafico" data-graph="linechart">
+            <img src="../static/img/linechart-img.png" alt="linechart" class="grafico-img">
+        </div>
+        <div class="eda-grafico" data-graph="barchart01">
+            <img src="../static/img/barchar01-img.png" alt="barchart01" class="grafico-img">
+        </div>
+        <div class="eda-grafico" data-graph="barchart02">
+            <img src="../static/img/barchar02-img.png" alt="barchart02" class="grafico-img">
+        </div>
+        <div class="eda-grafico" data-graph="barchart03">
+            <img src="../static/img/barchar03-img.png" alt="barchart03" class="grafico-img">
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-image">
+                <img id="modal-img" src="" alt="Gráfico">
+            </div>
+            <div class="modal-description">
+                <p id="modal-text">Descrição do gráfico</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- dicas -->
+
+    <section id="dicas-seguranca" class="dicas-seguranca">
+        <h2>Dicas de Segurança no Trânsito</h2>
+        <div class="dica-categoria">
+            <h3>Pedestres</h3>
+            <ul>
+                <li>Use sempre a faixa de pedestre ao atravessar a rua.</li>
+                <li>Evite distrações, como o uso de celular, enquanto atravessa a rua.</li>
+                <li>Olhe para os dois lados antes de atravessar, mesmo que o semáforo esteja verde.</li>
+                <li>Se possível, atravesse em locais bem iluminados, principalmente à noite.</li>
+            </ul>
+        </div>
+        
+        <div class="dica-categoria">
+            <h3>Ciclistas</h3>
+            <ul>
+                <li>Use sempre o capacete e equipamentos de segurança apropriados.</li>
+                <li>Siga as regras de trânsito, como sinalizar manobras com os braços.</li>
+                <li>Esteja atento aos motoristas e pedestres ao pedalar em áreas urbanas.</li>
+                <li>Evite andar por vias movimentadas quando possível e procure ciclovias ou ciclofaixas.</li>
+            </ul>
+        </div>
+        
+        <div class="dica-categoria">
+            <h3>Motoristas</h3>
+            <ul>
+                <li>Use o cinto de segurança sempre, tanto para você quanto para os passageiros.</li>
+                <li>Mantenha uma distância segura dos outros veículos e evite ultrapassagens perigosas.</li>
+                <li>Respeite os limites de velocidade e sinais de trânsito.</li>
+                <li>Evite dirigir sob o efeito de álcool ou outras substâncias.</li>
+            </ul>
+        </div>
+        
+        <div class="dica-categoria">
+            <h3>Passageiros</h3>
+            <ul>
+                <li>Use sempre o cinto de segurança, mesmo no banco de trás.</li>
+                <li>Evite distrair o motorista durante a condução.</li>
+                <li>Não abra portas ou janelas enquanto o veículo está em movimento.</li>
+                <li>Em caso de emergência, siga as instruções do motorista com calma e rapidez.</li>
+            </ul>
+        </div>
+        
+        <div class="dica-categoria">
+            <h3>Veículos</h3>
+            <ul>
+                <li>Mantenha a manutenção regular do veículo, como freios e pneus.</li>
+                <li>Verifique os níveis de óleo, água e outros fluidos antes de viagens longas.</li>
+                <li>Garanta que todas as luzes do veículo estão funcionando corretamente, incluindo faróis e piscas.</li>
+                <li>Não deixe objetos soltos dentro do carro que possam se tornar perigosos em uma freada brusca.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="fatalidade-acidente" class="fatalidade-section">
+        <h1>Informe os dados do acidente</h1>
+        <form action="/predict" method="post">
+            <label for="num_envolvidos">Número de Envolvidos:</label>
+            <input type="number" id="num_envolvidos" name="num_envolvidos" required>
+    
+            <label for="condutor">Condutor:</label>
+            <select id="condutor" name="condutor" required>
+                <option value="0">Não</option>
+                <option value="1">Sim</option>
+            </select>
+    
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo" required>
+                <option value="Feminino">Feminino</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Desconhecido">Desconhecido</option>
+            </select>
+    
+            <label for="cinto_seguranca">Cinto de Segurança:</label>
+            <select id="cinto_seguranca" name="cinto_seguranca" required>
+                <option value="SIM">SIM</option>
+                <option value="NÃO">NÃO</option>
+            </select>
+    
+            <label for="Embreagues">Embreagues:</label>
+            <select id="Embreagues" name="Embreagues" required>
+                <option value="SIM">SIM</option>
+                <option value="NÃO">NÃO</option>
+                <option value="NÃO INFORMADO">NÃO INFORMADO</option>
+            </select>
+    
+            <label for="categoria_habilitacao">Categoria Habilitação:</label>
+            <select id="categoria_habilitacao" name="categoria_habilitacao" required>
+                <option value="A">A</option>
+                <option value="AB">AB</option>
+                <option value="AC">AC</option>
+                <option value="AD">AD</option>
+                <option value="AE">AE</option>
+                <option value="AP">AP</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="DES">DESCONHECIDO</option>
+            </select>
+    
+            <label for="especie_veiculo">Espécie do Veículo:</label>
+            <select id="especie_veiculo" name="especie_veiculo" required>
+                <option value="Automóvel">Automóvel</option>
+                <option value="Bicicleta">Bicicleta</option>
+                <option value="Motocicleta">Motocicleta</option>
+                <option value="Ônibus">Ônibus</option>
+                <option value="Outro">Outro</option>
+            </select>
+    
+            <label for="Idade">Idade:</label>
+            <input type="number" id="Idade" name="Idade" required>
+    
+            <label for="hora">Hora:</label>
+            <input type="number" id="hora" name="hora" required>
+    
+            <label for="dia_semana">Dia da Semana:</label>
+            <select id="dia_semana" name="dia_semana" required>
+                <option value="domingo">Domingo</option>
+                <option value="segunda">Segunda-feira</option>
+                <option value="terça">Terça-feira</option>
+                <option value="quarta">Quarta-feira</option>
+                <option value="quinta">Quinta-feira</option>
+                <option value="sexta">Sexta-feira</option>
+                <option value="sábado">Sábado</option>
+            </select>
+    
+            <button type="submit">Prever</button>
+        </form>
+    
+        {% if prediction_text %}
+        <div id="resultado-fatalidade" class="resultado">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+        {% endif %}
+    </section>
+
+    <button id="voltar-topo" title="Voltar ao topo">⬆</button>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h5>Sobre Nós</h5>
+                <p>Nosso objetivo é promover a segurança no trânsito, com base na ciência de dados e inteligência artificial.</p>
+            </div>
+            <div class="footer-section">
+                <h5>Links Úteis</h5>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#dicas-seguranca">Dicas de Segurança</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Contato</h5>
+                <ul>
+                    <li>Email: <a href="mailto:contato@transitoseguro.com">contato@transitoseguro.com</a></li>
+                    <li>Telefone: +55 81 91234-5678</li>
+                    <li>Endereço:  Av. Mal. Mascarenhas de Morais, 3905 - Imbiribeira, Recife - PE, 51150-003</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Data Crash. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    
+    <!-- GTranslate Widget -->
+    <div class="gtranslate_wrapper"></div>
+    <script>
+        window.gtranslateSettings = {
+            "default_language": "pt",
+            "languages": ["pt", "en"],
+            "globe_color": "#ffd700",
+            "wrapper_selector": ".gtranslate_wrapper",
+            "horizontal_position": "left",
+            "vertical_position": "bottom",
+            "alt_flags": {
+                "en": "usa",
+                "pt": "brazil"
+            }
+        }
+    </script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/globe.js" defer></script>
+    <script src="../static/script.js"></script>
+</body>
+</html>
