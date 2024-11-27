@@ -20,7 +20,7 @@ class TestSistema(unittest.TestCase):
         options.add_argument('--remote-debugging-port=9222')  # Necessário para depuração remota (caso precise)
 
         self.driver = webdriver.Chrome(service=service, options=options)
-        self.driver.get("http://127.0.0.1:5000")  # URL do aplicativo Flask rodando localmente
+        self.driver.get("https://projeto-geral.onrender.com")  # URL do aplicativo Flask rodando localmente
 
     def test_titulo_pagina(self):
         """Teste básico para verificar o título da página"""
