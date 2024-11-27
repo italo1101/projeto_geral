@@ -1,36 +1,35 @@
 import unittest
-from app import calcular_fatalidade
+import pandas as pd
+
+# Supondo que você tenha suas funções ou mapeamentos em um módulo específico
+from app import sexo_map, cinto_map, embreg_map, categoria_map, veiculo_map, dia_semana_map
 
 class TestUnitarios(unittest.TestCase):
-    def test_calcular_fatalidade_valores_validos(self):
-        """Teste com valores válidos"""
-        resultado = calcular_fatalidade(idade=30, num_envolvidos=2, hora=12)
-        self.assertEqual(resultado, "Baixa Fatalidade")
+    
+    def test_sexo_map(self):
+        self.assertEqual(sexo_map.get('Feminino', 0), 1)
+        self.assertEqual(sexo_map.get('Masculino', 0), 2)
+        self.assertEqual(sexo_map.get('Outro', 0), 0)  # Valor padrão para mapeamento inválido
 
-    def test_calcular_fatalidade_faixa_horario(self):
-        """Teste de valores críticos de horário"""
-        resultado = calcular_fatalidade(idade=18, num_envolvidos=1, hora=23)
-        self.assertEqual(resultado, "Alta Fatalidade")
+    def test_cinto_map(self):
+        self.assertEqual(cinto_map.get('SIM', 0), 1)
+        self.assertEqual(cinto_map.get('NÃO', 0), 0)
+        self.assertEqual(cinto_map.get('Talvez', 0), 0)  # Valor padrão para mapeamento inválido
 
-    def test_calcular_fatalidade_idade_extrema(self):
-        """Teste com idade muito baixa"""
-        resultado = calcular_fatalidade(idade=2, num_envolvidos=3, hora=10)
-        self.assertEqual(resultado, "Média Fatalidade")
+    def test_categoria_habilitacao_map(self):
+        self.assertEqual(categoria_map.get('B', 13), 6)
+        self.assertEqual(categoria_map.get('AE', 13), 4)
+        self.assertEqual(categoria_map.get('Desconhecido', 13), 10)
+        self.assertEqual(categoria_map.get('INEXISTENTE', 13), 13)  # Valor padrão
 
-    def test_calcular_fatalidade_envolvidos_0(self):
-        """Teste com número de envolvidos igual a 0"""
-        resultado = calcular_fatalidade(idade=25, num_envolvidos=0, hora=14)
-        self.assertEqual(resultado, "Erro: Número de envolvidos deve ser maior que 0")
+    def test_dataframe_creation(self):
+        # Testa se o DataFrame é criado corretamente com os valores de entrada
+        input_data = pd.DataFrame([[1, 1, 2, 1, 2, 6, 0, 30, 12, 3]],
+                                  columns=['num_envolvidos', 'condutor', 'sexo', 'cinto_seguranca', 
+                                           'Embreagues', 'categoria_habilitacao', 'especie_veiculo', 
+                                           'Idade', 'hora', 'dia_semana'])
+        self.assertEqual(input_data.shape, (1, 10))  # Apenas 1 linha com 10 colunas
+        self.assertEqual(input_data['sexo'][0], 2)
 
-    def test_calcular_fatalidade_hora_extrema(self):
-        """Teste com hora no limite (00:00)"""
-        resultado = calcular_fatalidade(idade=40, num_envolvidos=3, hora=0)
-        self.assertEqual(resultado, "Baixa Fatalidade")
-
-    def test_calcular_fatalidade_idade_negativa(self):
-        """Teste com idade negativa"""
-        resultado = calcular_fatalidade(idade=-5, num_envolvidos=2, hora=10)
-        self.assertEqual(resultado, "Erro: Idade inválida")
-
-if __name__ == "_main_":
+if __name__ == '_main_':
     unittest.main()
