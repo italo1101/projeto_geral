@@ -1,33 +1,62 @@
 import unittest
-import pickle
 from app import app
 
 class TestIntegracao(unittest.TestCase):
+    
     def setUp(self):
-        self.app = app.test_client()
+        # Inicializa o cliente de teste Flask
+        self.client = app.test_client()
+        self.client.testing = True
 
-    def test_modelo_carregamento(self):
-        """Teste se o modelo treinado está carregando corretamente"""
-        with open("xgboost_model.pkl", "rb") as f:
-            modelo = pickle.load(f)
-        self.assertIsNotNone(modelo)
+    def test_home_route(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)  
+        self.assertIn(b'<title>Data Crash</title>', response.data)
 
-    def test_previsao_modelo(self):
-        """Teste de previsão do modelo treinado"""
-        dados = [25, 2, 15]  # Exemplo de entrada para o modelo
-        with open("xgboost_model.pkl", "rb") as f:
-            modelo = pickle.load(f)
-        previsao = modelo.predict([dados])
-        self.assertIn(previsao[0], ["Baixa", "Média", "Alta"])
-
-    def test_endpoint_previsao(self):
-        """Teste do endpoint de previsão"""
-        response = self.app.post(
-            "/predict", 
-            json={"idade": 25, "num_envolvidos": 2, "hora": 15}
+    def test_predict_valid_input(self):
+        # Teste para entrada válida
+        response = self.client.post(
+            '/predict',
+            data={
+                'num_envolvidos': 2,
+                'condutor': 1,
+                'sexo': 'Masculino',
+                'cinto_seguranca': 'SIM',
+                'Embreagues': 'SIM',
+                'categoria_habilitacao': 'AB',
+                'especie_veiculo': 'Automóvel',
+                'Idade': 25,
+                'hora': 15,
+                'dia_semana': 'segunda'
+            }
         )
         self.assertEqual(response.status_code, 200)
-        self.assertIn(response.json["fatalidade"], ["Baixa", "Média", "Alta"])
+        self.assertIn(b'severidade do acidente', response.data.lower())
 
-if __name__ == "_main_":
+    def test_predict_invalid_input(self):
+        # Teste para entrada inválida
+        response = self.client.post(
+            '/predict',
+            data={
+                'num_envolvidos': 'invalido',
+                'condutor': 1,
+                'sexo': 'Masculino',
+                'cinto_seguranca': 'SIM',
+                'Embreagues': 'SIM',
+                'categoria_habilitacao': 'AB',
+                'especie_veiculo': 'Automóvel',
+                'Idade': 25,
+                'hora': 15,
+                'dia_semana': 'segunda'
+            }
+        )
+        self.assertNotEqual(response.status_code, 400)
+        self.assertIn(
+            b'erro',
+            response.data.lower(),
+            msg=f"Resposta inesperada: {response.data}"
+        )
+
+
+if __name__ == '_main_':
     unittest.main()

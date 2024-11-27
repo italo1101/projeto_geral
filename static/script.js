@@ -60,3 +60,13 @@ window.onclick = function(event) {
           behavior: 'smooth' // Rolagem suave
       });
   });
+
+//   menu burguer
+
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('.nav');
+
+hamburger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    hamburger.classList.toggle('active');
+});
