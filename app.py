@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flasgger import Swagger
 import pickle
 import pandas as pd
@@ -33,21 +33,14 @@ condutor_map = {'SIM': 1, 'NÃO': 0}
 # Página inicial (para exibir o formulário HTML)
 @app.route('/')
 def home():
-    """
-    Exibe o formulário para o usuário preencher.
-    --- 
-    responses:
-      200:
-        description: Página inicial com o formulário
-    """
     return render_template('index.html')
 
-# Página para fazer a previsão
+# Página para fazer a previsão via JSON (API)
 @app.route('/predict', methods=['POST'])
 def predict():
     """
     Faz uma previsão sobre a severidade do acidente com base nos dados fornecidos pelo usuário.
-    --- 
+    ---
     parameters:
       - name: num_envolvidos
         in: formData
@@ -151,7 +144,7 @@ def predict():
     try:
         # Capturar os dados enviados pelo usuário e mapear para valores numéricos
         num_envolvidos = float(request.form['num_envolvidos']) if request.form['num_envolvidos'] else 0
-        condutor = condutor_map.get(request.form['condutor'], 0)  # Usar o mapeamento
+        condutor = condutor_map.get(request.form['condutor'], 0)
         sexo = sexo_map.get(request.form['sexo'], 0)
         cinto_seguranca = cinto_map.get(request.form['cinto_seguranca'], 0)
         embreagues = embreg_map.get(request.form['Embreagues'], 0)
@@ -170,22 +163,72 @@ def predict():
 
         # Fazer a previsão com o modelo
         if model:
-            prediction = model.predict(input_data)
-            # Mapear a previsão para o nome da classe
-            if prediction == 0:
-                result = 'Não Fatal'
-            elif prediction == 1:
-                result = 'Fatal'
-            else:
-                result = 'Sem Ferimentos'
+            prediction = model.predict(input_data)[0]
+            result = 'Fatal' if prediction == 1 else 'Não Fatal' if prediction == 0 else 'Sem Ferimentos'
         else:
             result = 'Erro ao carregar o modelo.'
 
     except Exception as e:
         result = f'Ocorreu um erro ao processar a previsão: {e}'
 
-    # Retornar o resultado para o usuário na mesma página
+    # Retornar o resultado em formato JSON para o Swagger
+    return jsonify({'prediction_text': f'A severidade do acidente é: {result}'})
+
+
+# Página para fazer a previsão via Formulário HTML
+@app.route('/predict-form', methods=['POST'])
+def predict_form():
+    try:
+        # Capturar os dados enviados pelo formulário e mapear para valores numéricos
+        num_envolvidos = float(request.form['num_envolvidos']) if request.form['num_envolvidos'] else 0
+        condutor = condutor_map.get(request.form['condutor'], 0)
+        sexo = sexo_map.get(request.form['sexo'], 0)
+        cinto_seguranca = cinto_map.get(request.form['cinto_seguranca'], 0)
+        embreagues = embreg_map.get(request.form['Embreagues'], 0)
+        categoria_habilitacao = categoria_map.get(request.form['categoria_habilitacao'], 13)
+        especie_veiculo = veiculo_map.get(request.form['especie_veiculo'], 0)
+        idade = float(request.form['Idade']) if request.form['Idade'] else 0
+        hora = float(request.form['hora']) if request.form['hora'] else 0
+        dia_semana = dia_semana_map.get(request.form['dia_semana'], 0)
+
+        # Criar um DataFrame com os dados recebidos
+        input_data = pd.DataFrame([[num_envolvidos, condutor, sexo, cinto_seguranca, embreagues, 
+                                    categoria_habilitacao, especie_veiculo, idade, hora, dia_semana]], 
+                                  columns=['num_envolvidos', 'condutor', 'sexo', 'cinto_seguranca', 
+                                           'Embreagues', 'categoria_habilitacao', 'especie_veiculo', 
+                                           'Idade', 'hora', 'dia_semana'])
+
+        # Fazer a previsão com o modelo
+        if model:
+            prediction = model.predict(input_data)[0]
+            result = 'Fatal' if prediction == 1 else 'Não Fatal' if prediction == 0 else 'Sem Ferimentos'
+        else:
+            result = 'Erro ao carregar o modelo.'
+
+    except Exception as e:
+        result = f'Ocorreu um erro ao processar a previsão: {e}'
+
+    # Retornar a previsão na página HTML
     return render_template('index.html', prediction_text=f'A severidade do acidente é: {result}')
+
+
+# Página inicial (para exibir o formulário HTML)
+@app.route('/', methods=['GET'], endpoint='home_route')
+def home():
+    """
+    Exibe o formulário para o usuário preencher.
+    ---
+    responses:
+      200:
+        description: Página inicial com o formulário HTML
+        content:
+          text/html:
+            schema:
+              type: string
+              example: "<form...>"
+    """
+    return render_template('index.html')
+
 
 # Rodar a aplicação Flask
 if __name__ == "__main__":
